@@ -1,18 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import styles from "./LoaderContainer.module.css";
-import * as spinkit from "./SpinkitLoaders";
+import React from "react"
+import ReactDOM from "react-dom"
+import * as spinkit from "./SpinkitLoaders"
+import "./LoaderContainer.css"
 
 const LOADER_ID = "LOADER_ID"; // target component id for DOM element
-const DEFAULT_LOADER = <spinkit.CircleFadeSpiner />;
-const DEFAULT_SIZE = "4rem";
-const DEFAULT_COLOR = "#333";
-const DEFAULT_BACKGROUND = "#fff";
+const DEFAULT_LOADER = <spinkit.CircleFadeSpiner />
+const DEFAULT_SIZE = "4rem"
+const DEFAULT_COLOR = "#333"
+const DEFAULT_BACKGROUND = "#fff"
 
-let Loader = DEFAULT_LOADER;
-let count = 0;
-let hasRunForFirstTime = false;
-let background = DEFAULT_BACKGROUND;
+let Loader = DEFAULT_LOADER
+let count = 0
+let hasRunForFirstTime = false
+let background = DEFAULT_BACKGROUND
 
 const PRESET_LOADERS = {
   "plane-spiner": <spinkit.PlaneSpiner />,
@@ -26,27 +26,27 @@ const PRESET_LOADERS = {
   "circle-fade-spiner": <spinkit.CircleFadeSpiner />,
   "grid-spiner": <spinkit.GridSpiner />,
   "fold-spiner": <spinkit.FoldSpiner />,
-  "wander-spiner": <spinkit.WanderSpiner />,
-};
+  "wander-spiner": <spinkit.WanderSpiner />
+}
 
 function appendChildToDom() {
   if (!document.getElementById(LOADER_ID)) {
-    const newDiv = document.createElement("div"); // if the element with id doesn't exist, create it
-    newDiv.id = LOADER_ID;
-    document.body.appendChild(newDiv);
+    const newDiv = document.createElement("div") // if the element with id doesn't exist, create it
+    newDiv.id = LOADER_ID
+    document.body.appendChild(newDiv)
   }
 
-  hasRunForFirstTime = true;
+  hasRunForFirstTime = true
 }
 
 function setPresetLoader({ preset, size, color, bg }) {
-  const root = document.documentElement;
-  root.style.setProperty("--sk-size", size ? size : DEFAULT_SIZE);
-  root.style.setProperty("--sk-color", color ? color : DEFAULT_COLOR);
-  background = bg ? bg : DEFAULT_BACKGROUND;
-  let p = PRESET_LOADERS[preset];
+  const root = document.documentElement
+  root.style.setProperty("--sk-size", size ? size : DEFAULT_SIZE)
+  root.style.setProperty("--sk-color", color ? color : DEFAULT_COLOR)
+  background = bg ? bg : DEFAULT_BACKGROUND
+  let p = PRESET_LOADERS[preset]
   if (p) {
-    Loader = p;
+    Loader = p
   } else {
     Loader = DEFAULT_LOADER
     console.error('invalid preset, using default')
@@ -54,14 +54,14 @@ function setPresetLoader({ preset, size, color, bg }) {
 }
 
 function setCustomLoader(customLoader) {
-  Loader = customLoader;
+  Loader = customLoader
 }
 
 function show(callback = () => {}) {
   if (!hasRunForFirstTime) appendChildToDom();
   if (count === 0) {
     ReactDOM.render(
-      <div style={{ background }} className={styles.container}>
+      <div style={{ background }} className='loader_loaderContainer'>
         {Loader}
       </div>,
       document.getElementById(LOADER_ID),
@@ -74,20 +74,20 @@ function show(callback = () => {}) {
 function hide(callback = () => {}) {
   if (hasRunForFirstTime) {
     if (count > 0) {
-      count--;
+      count--
     }
     if (count === 0) {
       ReactDOM.render(
         <></>,
         document.getElementById(LOADER_ID),
         callback
-      );
+      )
     }
   }
 }
 
 function isDisplaying() {
-  return count !== 0;
+  return count !== 0
 }
 
 const loader = {
@@ -95,7 +95,7 @@ const loader = {
   setCustomLoader,
   show,
   hide,
-  isDisplaying,
-};
+  isDisplaying
+}
 
-export default loader;
+export default loader
