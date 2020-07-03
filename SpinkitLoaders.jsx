@@ -1,9 +1,9 @@
 import React from "react"
 import "spinkit/spinkit.min.css"
 
-export const PlaneSpiner = () => <div className="sk-plane"></div>
+export const PlaneSpinner = () => <div className="sk-plane"></div>
 
-export const ChaseSpiner = () => (
+export const ChaseSpinner = () => (
   <div className="sk-chase">
     <div className="sk-chase-dot"></div>
     <div className="sk-chase-cot"></div>
@@ -14,14 +14,14 @@ export const ChaseSpiner = () => (
   </div>
 )
 
-export const BaunceSpiner = () => (
+export const BaunceSpinner = () => (
   <div className="sk-bounce">
     <div className="sk-bounce-dot"></div>
     <div className="sk-bounce-dot"></div>
   </div>
 )
 
-export const WaveSpiner = () => (
+export const WaveSpinner = () => (
   <div className="sk-wave">
     <div className="sk-wave-rect"></div>
     <div className="sk-wave-rect"></div>
@@ -31,9 +31,9 @@ export const WaveSpiner = () => (
   </div>
 )
 
-export const PulseSpiner = () => <div className="sk-pulse"></div>
+export const PulseSpinner = () => <div className="sk-pulse"></div>
 
-export const FlowSpiner = () => (
+export const FlowSpinner = () => (
   <div className="sk-flow">
     <div className="sk-flow-dot"></div>
     <div className="sk-flow-dot"></div>
@@ -41,14 +41,14 @@ export const FlowSpiner = () => (
   </div>
 )
 
-export const SwingSpiner = () => (
+export const SwingSpinner = () => (
   <div className="sk-swing">
     <div className="sk-swing-dot"></div>
     <div className="sk-swing-dot"></div>
   </div>
 )
 
-export const CircleSpiner = () => (
+export const CircleSpinner = () => (
   <div className="sk-circle">
     <div className="sk-circle-dot"></div>
     <div className="sk-circle-dot"></div>
@@ -65,7 +65,7 @@ export const CircleSpiner = () => (
   </div>
 )
 
-export const CircleFadeSpiner = () => (
+export const CircleFadeSpinner = () => (
   <div className="sk-circle-fade">
     <div className="sk-circle-fade-dot"></div>
     <div className="sk-circle-fade-dot"></div>
@@ -82,7 +82,7 @@ export const CircleFadeSpiner = () => (
   </div>
 )
 
-export const GridSpiner = () => (
+export const GridSpinner = () => (
   <div className="sk-grid">
     <div className="sk-grid-cube"></div>
     <div className="sk-grid-cube"></div>
@@ -96,7 +96,7 @@ export const GridSpiner = () => (
   </div>
 )
 
-export const FoldSpiner = () => (
+export const FoldSpinner = () => (
   <div className="sk-fold">
     <div className="sk-fold-cube"></div>
     <div className="sk-fold-cube"></div>
@@ -105,7 +105,7 @@ export const FoldSpiner = () => (
   </div>
 )
 
-export const WanderSpiner = () => (
+export const WanderSpinner = () => (
   <div className="sk-wander">
     <div className="sk-wander-cube"></div>
     <div className="sk-wander-cube"></div>
