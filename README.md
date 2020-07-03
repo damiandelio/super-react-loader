@@ -2,11 +2,12 @@
 The easiest way to implement a full-screen loader in React.
 Just import the library and show full-screen loader writing `loader.show()`.
 
-## Installation
+## Install
+Using npm:
 ```bash
 npm i super-react-loader
 ```
-or
+or using yarn:
 ```bash
 yarn add super-react-loader
 ```
@@ -37,7 +38,7 @@ loader.setPresetLoader({
     bg: 'lightblue'     // background property
 })
 ```
-##### Available loaders (based on [SpinKit](https://github.com/tobiasahlin/SpinKit) library)
+#### Available loaders (based on [SpinKit](https://github.com/tobiasahlin/SpinKit) library)
 - `plane`
 - `chase`
 - `baunce`
@@ -51,7 +52,7 @@ loader.setPresetLoader({
 - `fold`
 - `wander`
 
-#### Set your custom loader component
+### Set your custom loader component
 ```javascript
 const MyCustomLoader = () => <div>loading...</div>
 
@@ -60,22 +61,22 @@ loader.setCustomLoader(<MyCustomLoader />)
 
 You can combine it with `setPresetLoader` to define the background
 ```javascript
-const MyCustomLoader = () => <div>loading...</div>
+const MyCustomLoader = () => <div>Loading...</div>
 
 loader.setPresetLoader({ bg: '#652BE2' }) // change the background color
 loader.setCustomLoader(<MyCustomLoader />)
 ```
 
 ## API
-###### `loader.show([callBack()])`
+##### `loader.show([callBack()])`
 Shows the loader.
 Accepts an optional callback function that is executed when the loader rendering is finished.
 
-###### `loader.hide([callBack()])`
+##### `loader.hide([callBack()])`
 Hides the loader.
 Accepts an optional callback function that is executed when the loader is finished hiding.
 
-###### `loader.setPresetLoader({ preset, size, color, bg })`
+##### `loader.setPresetLoader({ preset, size, color, bg })`
 Changes the loader animation by another preset loader.
 Receives a strings object.
 - `preset`: Name of the preset. Default is `'circle-fade'`.
@@ -83,9 +84,9 @@ Receives a strings object.
 - `color`: Color of the loader. Default is `'#333'`
 - `bg`: Background css property. Default is `'#fff'`
 
-###### `loader.setCustomLoader(Component)`
+##### `loader.setCustomLoader(Component)`
 Sets a new custom loader inside a full-screen container.
 Receives a React component or element.
 
-###### `loader.isDisplaying()`
+##### `loader.isDisplaying()`
 Returns `true` if the loader is displaying. Otherwise returns `false`.
