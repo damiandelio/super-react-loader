@@ -1,13 +1,17 @@
 {
   "name": "super-react-loader",
   "version": "0.1.0",
-  "description" : "The easiest way to implement a full-screen loader in React.",
-  "license" : "MIT",
-  "main": "index.js",
+  "description": "The easiest way to implement a full-screen loader in React",
+  "license": "MIT",
+  "main": "dist/main.js",
   "dependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "spinkit": "^2.0.1"
+    "spinkit": "~2.0.1"
+  },
+  "scripts": {
+    "build": "microbundle-crl --no-compress -f cjs --sourcemap false --css-modules false",
+    "watch": "microbundle-crl watch --no-compress -f cjs --sourcemap false --css-modules false"
   },
   "repository": "https://github.com/damiandelio/super-react-loader",
   "keywords": [
@@ -16,5 +20,8 @@
     "react",
     "react-loader",
     "easy"
-  ]
+  ],
+  "devDependencies": {
+    "microbundle-crl": "~0.13.11"
+  }
 }

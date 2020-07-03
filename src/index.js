@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import * as spinkit from "./SpinkitLoaders"
+import * as spinkit from "./SpinkitLoaders.jsx"
 import "./LoaderContainer.css"
 
 const LOADER_ID = "super-react-loader" // target component id for DOM element
