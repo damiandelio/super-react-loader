@@ -1,6 +1,6 @@
 {
   "name": "super-react-loader",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The easiest way to implement a full-screen loader in React",
   "license": "MIT",
   "main": "dist/main.js",
