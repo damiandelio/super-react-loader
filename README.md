@@ -1,9 +1,9 @@
 # Super React Loader
 The easiest way to implement a full-screen loader in React.
-Just import the library and show full-screen loader writing `loader.show()`.
+Just import the library and write `loader.show()`.
 
 ## Demo
-Try it on [CodesandBox](https://codesandbox.io/s/super-react-loader-y7epr?file=/src/App.js).
+Try it on [CodeSandbox](https://codesandbox.io/s/super-react-loader-y7epr?file=/src/App.js).
 
 ## Install
 Using npm:
@@ -19,8 +19,8 @@ yarn add super-react-loader
 ```javascript
 import loader from 'super-react-loader'
 
-loader.show() // shows the loader
-loader.hide() // hides the loader
+loader.show() // shows loader
+loader.hide() // hides loader
 ```
 Very easy and clean :)
 
@@ -67,7 +67,7 @@ You can combine it with `setPresetLoader` to define the background
 ```javascript
 const MyCustomLoader = () => <div>Loading...</div>
 
-loader.setPresetLoader({ bg: '#652BE2' }) // change the background color
+loader.setPresetLoader({ bg: '#652BE2' }) // change background color
 loader.setCustomLoader(<MyCustomLoader />)
 ```
 

@@ -2,27 +2,32 @@
   "name": "super-react-loader",
   "version": "0.1.3",
   "description": "The easiest way to implement a full-screen loader in React",
-  "license": "MIT",
+  "keywords": [
+    "super",
+    "react",
+    "loader",
+    "react-loader",
+    "react-dom",
+    "spinner",
+    "spinkit",
+    "easy",
+    "css"
+  ],
   "main": "dist/main.js",
+  "scripts": {
+    "build": "microbundle-crl --no-compress -f cjs --sourcemap false --css-modules false",
+    "watch": "microbundle-crl watch --no-compress -f cjs --sourcemap false --css-modules false"
+  },
   "dependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "spinkit": "~2.0.1"
   },
-  "scripts": {
-    "build": "microbundle-crl --no-compress -f cjs --sourcemap false --css-modules false",
-    "watch": "microbundle-crl watch --no-compress -f cjs --sourcemap false --css-modules false"
-  },
-  "repository": "https://github.com/damiandelio/super-react-loader",
-  "homepage": "https://codesandbox.io/s/super-react-loader-y7epr",
-  "keywords": [
-    "loader",
-    "spinner",
-    "react",
-    "react-loader",
-    "easy"
-  ],
   "devDependencies": {
     "microbundle-crl": "~0.13.11"
-  }
+  },
+  "author": "Damián De Lio",
+  "license": "MIT",
+  "repository": "https://github.com/damiandelio/super-react-loader",
+  "homepage": "https://codesandbox.io/s/super-react-loader-y7epr"
 }
