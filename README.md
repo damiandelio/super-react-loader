@@ -2,6 +2,9 @@
 The easiest way to implement a full-screen loader in React.
 Just import the library and show full-screen loader writing `loader.show()`.
 
+## Demo
+Try it on [CodesandBox](https://codesandbox.io/s/super-react-loader-y7epr?file=/src/App.js).
+
 ## Install
 Using npm:
 ```bash
@@ -25,8 +28,9 @@ Very easy and clean :)
 You can choose between some preset loaders or create your custom.
 
 ### Preset loaders
-To use it, you have to pass the preset name.
+To use it you have to pass the preset name.
 ```javascript
+// in your index.js
 loader.setPresetLoader({ preset: 'fold' })
 ```
 Options
