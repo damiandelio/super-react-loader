@@ -59,7 +59,10 @@ var PulseSpinner = function PulseSpinner() {
 };
 var FlowSpinner = function FlowSpinner() {
   return /*#__PURE__*/React__default.createElement("div", {
-    className: "sk-flow"
+    className: "sk-flow",
+    style: {
+      alignItems: "center"
+    }
   }, /*#__PURE__*/React__default.createElement("div", {
     className: "sk-flow-dot"
   }), /*#__PURE__*/React__default.createElement("div", {

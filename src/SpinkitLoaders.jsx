@@ -34,7 +34,7 @@ export const WaveSpinner = () => (
 export const PulseSpinner = () => <div className="sk-pulse"></div>
 
 export const FlowSpinner = () => (
-  <div className="sk-flow">
+  <div className="sk-flow" style={{alignItems: "center"}}>
     <div className="sk-flow-dot"></div>
     <div className="sk-flow-dot"></div>
     <div className="sk-flow-dot"></div>
