@@ -8,4 +8,16 @@
   width: 100%;
   height: 100%;
   z-index: 16777271;
+  -webkit-animation: loaderAnimationIn 0.15s ease-in;
+          animation: loaderAnimationIn 0.15s ease-in;
+}
+
+@-webkit-keyframes loaderAnimationIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes loaderAnimationIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
