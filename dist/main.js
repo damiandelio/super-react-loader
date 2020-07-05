@@ -210,19 +210,14 @@ var PRESET_LOADERS = {
 };
 var Loader = DEFAULT_LOADER;
 var background = DEFAULT_BACKGROUND;
-var hasRunForFirstTime = false;
 var count = 0;
 ROOT.style.setProperty("--sk-size", DEFAULT_SIZE);
 ROOT.style.setProperty("--sk-color", DEFAULT_COLOR);
 
-function appendChildToDom() {
-  if (!document.getElementById(LOADER_ID)) {
-    var newDiv = document.createElement("div");
-    newDiv.id = LOADER_ID;
-    document.body.appendChild(newDiv);
-  }
-
-  hasRunForFirstTime = true;
+if (!document.getElementById(LOADER_ID)) {
+  var newDiv = document.createElement("div");
+  newDiv.id = LOADER_ID;
+  document.body.appendChild(newDiv);
 }
 
 function setPresetLoader(_ref) {
@@ -252,8 +247,6 @@ function show(callback) {
     callback = function callback() {};
   }
 
-  if (!hasRunForFirstTime) appendChildToDom();
-
   if (count === 0) {
     ReactDOM.render( /*#__PURE__*/React__default.createElement("div", {
       style: {
@@ -271,14 +264,12 @@ function hide(callback) {
     callback = function callback() {};
   }
 
-  if (hasRunForFirstTime) {
-    if (count > 0) {
-      count--;
-    }
+  if (count > 0) {
+    count--;
+  }
 
-    if (count === 0) {
-      ReactDOM.render( /*#__PURE__*/React__default.createElement(React.Fragment, null), document.getElementById(LOADER_ID), callback);
-    }
+  if (count === 0) {
+    ReactDOM.render( /*#__PURE__*/React__default.createElement(React.Fragment, null), document.getElementById(LOADER_ID), callback);
   }
 }
 

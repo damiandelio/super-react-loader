@@ -27,21 +27,17 @@ const PRESET_LOADERS = {
 
 let Loader = DEFAULT_LOADER
 let background = DEFAULT_BACKGROUND
-let hasRunForFirstTime = false
 let count = 0
 
 // sets default global css variables
 ROOT.style.setProperty("--sk-size", DEFAULT_SIZE)
 ROOT.style.setProperty("--sk-color", DEFAULT_COLOR)
 
-function appendChildToDom() {
-  if (!document.getElementById(LOADER_ID)) {
-    const newDiv = document.createElement("div") // if the element with id doesn't exist, create it
-    newDiv.id = LOADER_ID
-    document.body.appendChild(newDiv)
-  }
-
-  hasRunForFirstTime = true
+// append child to dom
+if (!document.getElementById(LOADER_ID)) {
+  const newDiv = document.createElement("div") // if the element with id doesn't exist, create it
+  newDiv.id = LOADER_ID
+  document.body.appendChild(newDiv)
 }
 
 function setPresetLoader({ preset, size, color, bg }) {
@@ -62,7 +58,6 @@ function setCustomLoader(customLoader) {
 }
 
 function show(callback = () => {}) {
-  if (!hasRunForFirstTime) appendChildToDom()
   if (count === 0) {
     ReactDOM.render(
       <div style={{ background }} className='loader_loaderContainer'>
@@ -76,17 +71,15 @@ function show(callback = () => {}) {
 }
 
 function hide(callback = () => {}) {
-  if (hasRunForFirstTime) {
-    if (count > 0) {
-      count--
-    }
-    if (count === 0) {
-      ReactDOM.render(
-        <></>,
-        document.getElementById(LOADER_ID),
-        callback
-      )
-    }
+  if (count > 0) {
+    count--
+  }
+  if (count === 0) {
+    ReactDOM.render(
+      <></>,
+      document.getElementById(LOADER_ID),
+      callback
+    )
   }
 }
 
