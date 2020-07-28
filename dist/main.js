@@ -188,12 +188,11 @@ var WanderSpinner = function WanderSpinner() {
   }));
 };
 
-var LOADER_ID = "super-react-loader";
+var CONTAINER_REF = document.createElement("div");
 var DEFAULT_LOADER = /*#__PURE__*/React__default.createElement(CircleFadeSpinner, null);
 var DEFAULT_SIZE = "4rem";
 var DEFAULT_COLOR = "#333";
 var DEFAULT_BACKGROUND = "#fff";
-var ROOT = document.documentElement;
 var PRESET_LOADERS = {
   "plane": /*#__PURE__*/React__default.createElement(PlaneSpinner, null),
   "chase": /*#__PURE__*/React__default.createElement(ChaseSpinner, null),
@@ -209,25 +208,25 @@ var PRESET_LOADERS = {
   "wander": /*#__PURE__*/React__default.createElement(WanderSpinner, null)
 };
 var Loader = DEFAULT_LOADER;
-var background = DEFAULT_BACKGROUND;
 var count = 0;
-ROOT.style.setProperty("--sk-size", DEFAULT_SIZE);
-ROOT.style.setProperty("--sk-color", DEFAULT_COLOR);
 
-if (!document.getElementById(LOADER_ID)) {
-  var newDiv = document.createElement("div");
-  newDiv.id = LOADER_ID;
-  document.body.appendChild(newDiv);
+function setCssVar(name, newValue) {
+  document.documentElement.style.setProperty(name, newValue);
 }
+
+document.body.appendChild(CONTAINER_REF);
+setCssVar("--sk-size", DEFAULT_SIZE);
+setCssVar("--sk-color", DEFAULT_COLOR);
+setCssVar("--srl-background", DEFAULT_BACKGROUND);
 
 function setPresetLoader(_ref) {
   var preset = _ref.preset,
       size = _ref.size,
       color = _ref.color,
       bg = _ref.bg;
-  ROOT.style.setProperty("--sk-size", size ? size : DEFAULT_SIZE);
-  ROOT.style.setProperty("--sk-color", color ? color : DEFAULT_COLOR);
-  background = bg ? bg : DEFAULT_BACKGROUND;
+  setCssVar("--sk-size", size ? size : DEFAULT_SIZE);
+  setCssVar("--sk-color", color ? color : DEFAULT_COLOR);
+  setCssVar("--srl-background", bg ? bg : DEFAULT_BACKGROUND);
   var p = PRESET_LOADERS[preset];
 
   if (p) {
@@ -249,27 +248,20 @@ function show(callback) {
 
   if (count === 0) {
     ReactDOM.render( /*#__PURE__*/React__default.createElement("div", {
-      style: {
-        background: background
-      },
       className: "loader_loaderContainer"
-    }, Loader), document.getElementById(LOADER_ID), callback);
+    }, Loader), CONTAINER_REF, callback);
   }
 
   count++;
 }
 
-function hide(callback) {
-  if (callback === void 0) {
-    callback = function callback() {};
-  }
-
+function hide() {
   if (count > 0) {
     count--;
   }
 
   if (count === 0) {
-    ReactDOM.render( /*#__PURE__*/React__default.createElement(React.Fragment, null), document.getElementById(LOADER_ID), callback);
+    ReactDOM.unmountComponentAtNode(CONTAINER_REF);
   }
 }
 

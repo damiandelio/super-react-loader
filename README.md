@@ -6,11 +6,11 @@ Just import the library and write `loader.show()`.
 Try it on [CodeSandbox](https://codesandbox.io/s/super-react-loader-y7epr?file=/src/App.js).
 
 ## Install
-Using npm:
+Using Npm:
 ```bash
 npm i super-react-loader
 ```
-or using yarn:
+or using Yarn:
 ```bash
 yarn add super-react-loader
 ```
@@ -73,12 +73,11 @@ loader.setCustomLoader(<MyCustomLoader />)
 
 ## API
 ##### `loader.show([callBack()])`
-Shows the loader.
-Accepts an optional callback function that is executed when the loader rendering is finished.
+Mount loader component.
+Accepts an optional callback function that is executed when the loader render is complete.
 
-##### `loader.hide([callBack()])`
-Hides the loader.
-Accepts an optional callback function that is executed when the loader is finished hiding.
+##### `loader.hide()`
+Unmount loader component.
 
 ##### `loader.setPresetLoader({ preset, size, color, bg })`
 Changes the loader animation by another preset loader.

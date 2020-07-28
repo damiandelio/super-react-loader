@@ -3,12 +3,11 @@ import ReactDOM from "react-dom"
 import * as spinkit from "./SpinkitLoaders.jsx"
 import "./LoaderContainer.css"
 
-const LOADER_ID = "super-react-loader" // target component id for DOM element
+const CONTAINER_REF = document.createElement("div") // target DOM element ref
 const DEFAULT_LOADER = <spinkit.CircleFadeSpinner />
 const DEFAULT_SIZE = "4rem"
 const DEFAULT_COLOR = "#333"
 const DEFAULT_BACKGROUND = "#fff"
-const ROOT = document.documentElement
 
 const PRESET_LOADERS = {
   "plane": <spinkit.PlaneSpinner />,
@@ -26,24 +25,25 @@ const PRESET_LOADERS = {
 }
 
 let Loader = DEFAULT_LOADER
-let background = DEFAULT_BACKGROUND
 let count = 0
 
-// sets default global css variables
-ROOT.style.setProperty("--sk-size", DEFAULT_SIZE)
-ROOT.style.setProperty("--sk-color", DEFAULT_COLOR)
-
-// append child to dom
-if (!document.getElementById(LOADER_ID)) {
-  const newDiv = document.createElement("div") // if the element with id doesn't exist, create it
-  newDiv.id = LOADER_ID
-  document.body.appendChild(newDiv)
+// sets a new value for a css variable
+function setCssVar(name, newValue) {
+  document.documentElement.style.setProperty(name, newValue)
 }
 
+// append container div to DOM
+document.body.appendChild(CONTAINER_REF)
+
+// sets default global css variables
+setCssVar("--sk-size", DEFAULT_SIZE)
+setCssVar("--sk-color", DEFAULT_COLOR)
+setCssVar("--srl-background", DEFAULT_BACKGROUND)
+
 function setPresetLoader({ preset, size, color, bg }) {
-  ROOT.style.setProperty("--sk-size", size ? size : DEFAULT_SIZE)
-  ROOT.style.setProperty("--sk-color", color ? color : DEFAULT_COLOR)
-  background = bg ? bg : DEFAULT_BACKGROUND
+  setCssVar("--sk-size", size ? size : DEFAULT_SIZE)
+  setCssVar("--sk-color", color ? color : DEFAULT_COLOR)
+  setCssVar("--srl-background", bg ? bg : DEFAULT_BACKGROUND)
   let p = PRESET_LOADERS[preset]
   if (p) {
     Loader = p
@@ -60,26 +60,22 @@ function setCustomLoader(customLoader) {
 function show(callback = () => {}) {
   if (count === 0) {
     ReactDOM.render(
-      <div style={{ background }} className='loader_loaderContainer'>
+      <div className='loader_loaderContainer'>
         {Loader}
       </div>,
-      document.getElementById(LOADER_ID),
+      CONTAINER_REF,
       callback
     )
   }
   count++
 }
 
-function hide(callback = () => {}) {
+function hide() {
   if (count > 0) {
     count--
   }
   if (count === 0) {
-    ReactDOM.render(
-      <></>,
-      document.getElementById(LOADER_ID),
-      callback
-    )
+    ReactDOM.unmountComponentAtNode(CONTAINER_REF)
   }
 }
 
