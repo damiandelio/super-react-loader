@@ -48,13 +48,16 @@ function setPresetLoader({ preset, size, color, bg }) {
   if (p) {
     Loader = p
   } else {
-    Loader = DEFAULT_LOADER
-    console.error('invalid preset, using default')
+    console.error('setPresetLoader invalid preset')
   }
 }
 
 function setCustomLoader(customLoader) {
-  Loader = customLoader
+  if(React.isValidElement(customLoader)) {
+    Loader = customLoader
+  } else {
+    console.error('setCustomLoader expects a valid React component')
+  }
 }
 
 function show(callback = () => {}) {
@@ -73,8 +76,7 @@ function show(callback = () => {}) {
 function hide() {
   if (count > 0) {
     count--
-  }
-  if (count === 0) {
+  } else if (count === 0) {
     ReactDOM.unmountComponentAtNode(CONTAINER_REF)
   }
 }

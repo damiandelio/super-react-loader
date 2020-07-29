@@ -33,7 +33,7 @@ To use it you have to pass the preset name.
 // in your index.js
 loader.setPresetLoader({ preset: 'fold' })
 ```
-Options
+All options
 ```javascript
 loader.setPresetLoader({
     preset: 'plane',    // loader preset name
