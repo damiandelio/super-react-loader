@@ -1,4 +1,4 @@
-import React, { Fragment } from "react"
+import React from "react"
 import ReactDOM from "react-dom"
 import * as spinkit from "./SpinkitLoaders.jsx"
 import "./LoaderContainer.css"
@@ -76,7 +76,9 @@ function show(callback = () => {}) {
 function hide() {
   if (count > 0) {
     count--
-  } else if (count === 0) {
+  }
+
+  if (count === 0) {
     ReactDOM.unmountComponentAtNode(CONTAINER_REF)
   }
 }
